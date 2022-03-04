@@ -74,9 +74,9 @@
       <a name="appearance" val="classic"/>
       <a name="label" val="p"/>
     </comp>
-    <comp lib="6" loc="(156,62)" name="Text">
-      <a name="font" val="SansSerif plain 20"/>
-      <a name="text" val="OR gate: PMOS + pull-up"/>
+    <comp lib="6" loc="(193,61)" name="Text">
+      <a name="font" val="SansSerif bold 20"/>
+      <a name="text" val="OR gate: PMOS + pull-up resistor"/>
     </comp>
     <wire from="(120,110)" to="(120,120)"/>
     <wire from="(120,120)" to="(160,120)"/>

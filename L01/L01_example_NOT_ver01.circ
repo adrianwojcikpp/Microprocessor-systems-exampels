@@ -79,8 +79,8 @@
       <a name="appearance" val="classic"/>
       <a name="label" val="p"/>
     </comp>
-    <comp lib="8" loc="(106,42)" name="Text">
-      <a name="text" val="NOT gate: NMOS + PMOS"/>
+    <comp lib="8" loc="(153,43)" name="Text">
+      <a name="text" val="NOT gate: NMOS + PMOS (CMOS)"/>
     </comp>
     <wire from="(110,110)" to="(110,120)"/>
     <wire from="(110,120)" to="(110,130)"/>

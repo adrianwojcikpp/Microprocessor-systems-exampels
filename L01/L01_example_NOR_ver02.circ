@@ -57,38 +57,59 @@
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="clabel" val="q"/>
     <a name="simulationFrequency" val="1.0"/>
-    <comp lib="0" loc="(110,110)" name="Transistor">
-      <a name="facing" val="south"/>
+    <comp lib="0" loc="(140,170)" name="Transistor">
+      <a name="facing" val="north"/>
       <a name="selloc" val="bl"/>
       <a name="type" val="n"/>
     </comp>
-    <comp lib="0" loc="(110,130)" name="Transistor">
-      <a name="facing" val="north"/>
+    <comp lib="0" loc="(140,220)" name="Ground"/>
+    <comp lib="0" loc="(190,110)" name="Transistor">
+      <a name="facing" val="south"/>
       <a name="selloc" val="bl"/>
     </comp>
-    <comp lib="0" loc="(110,170)" name="Ground"/>
-    <comp lib="0" loc="(110,70)" name="Power"/>
-    <comp lib="0" loc="(130,120)" name="Pin">
+    <comp lib="0" loc="(190,160)" name="Transistor">
+      <a name="facing" val="south"/>
+      <a name="selloc" val="bl"/>
+    </comp>
+    <comp lib="0" loc="(190,170)" name="Transistor">
+      <a name="facing" val="north"/>
+      <a name="selloc" val="bl"/>
+      <a name="type" val="n"/>
+    </comp>
+    <comp lib="0" loc="(190,220)" name="Ground"/>
+    <comp lib="0" loc="(190,70)" name="Power"/>
+    <comp lib="0" loc="(230,160)" name="Pin">
       <a name="appearance" val="classic"/>
       <a name="facing" val="west"/>
       <a name="label" val="y"/>
       <a name="output" val="true"/>
       <a name="tristate" val="true"/>
     </comp>
-    <comp lib="0" loc="(60,120)" name="Pin">
+    <comp lib="0" loc="(80,140)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="q"/>
+    </comp>
+    <comp lib="0" loc="(80,90)" name="Pin">
       <a name="appearance" val="classic"/>
       <a name="label" val="p"/>
     </comp>
-    <comp lib="8" loc="(112,47)" name="Text">
-      <a name="text" val="Buffer: NMOS + PMOS"/>
+    <comp lib="8" loc="(200,50)" name="Text">
+      <a name="text" val="NOR gate: 2x NMOS + 2x PMOS (CMOS)"/>
     </comp>
-    <wire from="(110,110)" to="(110,120)"/>
-    <wire from="(110,120)" to="(110,130)"/>
-    <wire from="(110,120)" to="(130,120)"/>
-    <wire from="(60,120)" to="(70,120)"/>
-    <wire from="(70,120)" to="(70,150)"/>
-    <wire from="(70,150)" to="(90,150)"/>
-    <wire from="(70,90)" to="(70,120)"/>
-    <wire from="(70,90)" to="(90,90)"/>
+    <wire from="(110,140)" to="(110,190)"/>
+    <wire from="(110,140)" to="(170,140)"/>
+    <wire from="(110,190)" to="(120,190)"/>
+    <wire from="(140,160)" to="(140,170)"/>
+    <wire from="(140,160)" to="(190,160)"/>
+    <wire from="(140,210)" to="(140,220)"/>
+    <wire from="(160,190)" to="(170,190)"/>
+    <wire from="(160,90)" to="(160,190)"/>
+    <wire from="(160,90)" to="(170,90)"/>
+    <wire from="(190,110)" to="(190,120)"/>
+    <wire from="(190,160)" to="(190,170)"/>
+    <wire from="(190,160)" to="(230,160)"/>
+    <wire from="(190,210)" to="(190,220)"/>
+    <wire from="(80,140)" to="(110,140)"/>
+    <wire from="(80,90)" to="(160,90)"/>
   </circuit>
 </project>

@@ -97,9 +97,9 @@
       <a name="label" val="y"/>
       <a name="output" val="true"/>
     </comp>
-    <comp lib="6" loc="(196,82)" name="Text">
-      <a name="font" val="SansSerif plain 20"/>
-      <a name="text" val="XOR: 2 AND + OR"/>
+    <comp lib="6" loc="(223,78)" name="Text">
+      <a name="font" val="SansSerif bold 20"/>
+      <a name="text" val="XOR: 4x NMOS + 2x PMOS"/>
     </comp>
     <wire from="(120,160)" to="(130,160)"/>
     <wire from="(120,230)" to="(130,230)"/>

@@ -1,10 +1,10 @@
 /**
   ******************************************************************************
-  * @file    L01_example.c
+  * @file    L02_example.c
   * @author  AW           Adrian.Wojcik@put.poznan.pl
   * @version 1.0
-  * @date    01-Mar-2022
-  * @brief   Intruction #01 tasks solution template
+  * @date    04-Mar-2022
+  * @brief   Intruction #02 tasks solution template
   *
   ******************************************************************************
   */
@@ -13,13 +13,13 @@
 #include <stdio.h>
 
 /* Define --------------------------------------------------------------------*/
-
-/* Macro ---------------------------------------------------------------------*/
 #define T '1' /**< True symbol (T / H / 1) */
 #define F '0' /**< False symbol (F / L / 0) */
 
+/* Macro ---------------------------------------------------------------------*/
+
 /* Typedef -------------------------------------------------------------------*/
-typedef _Bool (*logic_operator)(_Bool,_Bool); /**< Binary boolean operator */
+typedef _Bool (*logic_function)(unsigned int); /**< Logic function */
 
 /* Global variables ----------------------------------------------------------*/
 
@@ -28,36 +28,39 @@ typedef _Bool (*logic_operator)(_Bool,_Bool); /**< Binary boolean operator */
 /* Function definitions ------------------------------------------------------*/
 
 /**
- * @brief Binary boolean operator truth table printing procedure
- * @param[in] op      Binary boolean operator function 
- * @param[in] op_sign Binary boolean operator symbol or designation
+ * @brief Logic function truth table printing procedure
+ * @param[in] fcn    Logic function 
+ * @param[in] bits   Input size (number of bits)
  * @return None
  */
-void print_truth_table(logic_operator op, const char* op_sign)
+void print_truth_table(logic_function fcn, unsigned int bits)
 {
-  printf("\n| p | q | p%sq |\n-----------------\n", op_sign);
-  unsigned char i;
-  _Bool p,q;
-  for(i = 0; i < 4; i++)
+  unsigned int j;
+  
+  printf("    |");
+  for(j = 0; j < bits; j++)
+    printf(" %c |", j + 'a');
+  printf(" %s |\n", "fcn");
+    
+  unsigned int i;
+  for(i = 0; i < (1 << bits); i++)
   {
-    p = i & 2;
-    q = i & 1;
-    printf("| %c | %c |   %c   |\n", p ? T : F, 
-                                     q ? T : F, 
-                               op(p,q) ? T : F);
+    printf("%3d |",i);
+    for(j = bits; j > 0; j--)
+      printf(" %c |", (i & (1 << (j-1))) ? T : F);
+    printf("  %c  |\n", fcn(i) ? T : F);
   }
 }
 
 /**
- * @brief Binary operator <<TODO>>
- * @param[in] p First boolean input argument
- * @param[in] q Second boolean input argument
+ * @brief Logic function <<TODO>>
+ * @param[in] x Integer input
  * @return <<TODO>>
  */
-_Bool my_op(_Bool p, _Bool q) // <<TODO>> CHANGE NAME FUNCTION!
+_Bool my_fcn(unsigned int x) // <<TODO>> CHANGE NAME FUNCTION!
 {
   // USER CODE BEGIN
-  return 0;
+  return ((x % 3) == 0);
   // USER CODE END
 }
 
@@ -70,7 +73,7 @@ _Bool my_op(_Bool p, _Bool q) // <<TODO>> CHANGE NAME FUNCTION!
 int main(void)
 {
   // call example
-  print_truth_table(my_op, " ? "); // <<TODO>> CHANGE OPERATOR SYMBOL!
+  print_truth_table(my_fcn, 5 /* number of bits */); 
   
   return 0;
 }

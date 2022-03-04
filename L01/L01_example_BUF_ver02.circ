@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project source="2.7.1" version="1.0">
-This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
-<lib desc="#Wiring" name="0"/>
+<project source="3.7.2" version="1.0">
+  This file is intended to be loaded by Logisim-evolution v3.7.2(https://github.com/logisim-evolution/).
+
+  <lib desc="#Wiring" name="0">
+    <tool name="Pin">
+      <a name="appearance" val="classic"/>
+    </tool>
+  </lib>
   <lib desc="#Gates" name="1"/>
   <lib desc="#Plexers" name="2"/>
   <lib desc="#Arithmetic" name="3"/>
@@ -9,10 +14,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
   <lib desc="#I/O" name="5"/>
   <lib desc="#Base" name="6">
     <tool name="Text Tool">
-      <a name="text" val=""/>
       <a name="font" val="SansSerif plain 12"/>
-      <a name="halign" val="center"/>
-      <a name="valign" val="base"/>
     </tool>
   </lib>
   <main name="main"/>
@@ -31,10 +33,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <tool lib="6" name="Edit Tool"/>
     <tool lib="6" name="Wiring Tool"/>
     <tool lib="6" name="Text Tool">
-      <a name="text" val=""/>
       <a name="font" val="SansSerif plain 12"/>
-      <a name="halign" val="center"/>
-      <a name="valign" val="base"/>
     </tool>
     <sep/>
     <tool lib="0" name="Pin"/>
@@ -56,29 +55,32 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
   <circuit name="main">
     <a name="circuit" val="main"/>
     <a name="clabel" val="q"/>
-    <a name="clabelup" val="east"/>
     <a name="clabelfont" val="SansSerif plain 12"/>
-    <wire from="(110,120)" to="(140,120)"/>
-    <wire from="(110,110)" to="(110,120)"/>
-    <wire from="(70,90)" to="(90,90)"/>
-    <comp lib="0" loc="(70,90)" name="Pin">
-      <a name="label" val="p"/>
-    </comp>
-    <comp lib="0" loc="(140,120)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="label" val="y"/>
+    <a name="simulationFrequency" val="1.0"/>
+    <comp lib="0" loc="(110,110)" name="Transistor">
+      <a name="facing" val="south"/>
+      <a name="selloc" val="bl"/>
+      <a name="type" val="n"/>
     </comp>
     <comp lib="0" loc="(110,120)" name="Pull Resistor">
       <a name="facing" val="north"/>
     </comp>
     <comp lib="0" loc="(110,70)" name="Power"/>
-    <comp lib="6" loc="(109,43)" name="Text">
-      <a name="text" val="Buffer: NMOS + pull-down"/>
+    <comp lib="0" loc="(140,120)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="y"/>
+      <a name="output" val="true"/>
     </comp>
-    <comp lib="0" loc="(110,110)" name="Transistor">
-      <a name="type" val="n"/>
-      <a name="facing" val="south"/>
+    <comp lib="0" loc="(70,90)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="p"/>
     </comp>
+    <comp lib="6" loc="(166,46)" name="Text">
+      <a name="text" val="Buffer: NMOS + pull-down resistor"/>
+    </comp>
+    <wire from="(110,110)" to="(110,120)"/>
+    <wire from="(110,120)" to="(140,120)"/>
+    <wire from="(70,90)" to="(90,90)"/>
   </circuit>
 </project>

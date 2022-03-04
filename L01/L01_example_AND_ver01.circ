@@ -76,8 +76,8 @@
       <a name="appearance" val="classic"/>
       <a name="label" val="p"/>
     </comp>
-    <comp lib="6" loc="(201,74)" name="Text">
-      <a name="font" val="SansSerif plain 20"/>
+    <comp lib="6" loc="(212,77)" name="Text">
+      <a name="font" val="SansSerif bold 20"/>
       <a name="text" val="AND gate: NMOS + pull-down resistor"/>
     </comp>
     <wire from="(120,110)" to="(120,120)"/>
