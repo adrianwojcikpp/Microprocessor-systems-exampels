@@ -69,10 +69,10 @@ _Bool my_op(_Bool p, _Bool q) // <<TODO>> CHANGE NAME FUNCTION!
   */
 int main(void)
 {
-	// call example
-    print_truth_table(my_op, " ? "); // <<TODO>> CHANGE OPERATOR SYMBOL!
-	
-	return 0;
+  // call example
+  print_truth_table(my_op, " ? "); // <<TODO>> CHANGE OPERATOR SYMBOL!
+  
+  return 0;
 }
 
 /* Function definitions ------------------------------------------------------*/

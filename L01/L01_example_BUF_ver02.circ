@@ -5,13 +5,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
   <lib desc="#Gates" name="1"/>
   <lib desc="#Plexers" name="2"/>
   <lib desc="#Arithmetic" name="3"/>
-  <lib desc="#Memory" name="4">
-    <tool name="ROM">
-      <a name="contents">addr/data: 8 8
-0
-</a>
-    </tool>
-  </lib>
+  <lib desc="#Memory" name="4"/>
   <lib desc="#I/O" name="5"/>
   <lib desc="#Base" name="6">
     <tool name="Text Tool">
@@ -64,27 +58,27 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <a name="clabel" val="q"/>
     <a name="clabelup" val="east"/>
     <a name="clabelfont" val="SansSerif plain 12"/>
-    <wire from="(60,120)" to="(90,120)"/>
-    <wire from="(110,90)" to="(140,90)"/>
-    <wire from="(110,140)" to="(110,160)"/>
-    <wire from="(110,90)" to="(110,100)"/>
-    <comp lib="0" loc="(110,100)" name="Transistor">
-      <a name="facing" val="north"/>
+    <wire from="(110,120)" to="(140,120)"/>
+    <wire from="(110,110)" to="(110,120)"/>
+    <wire from="(70,90)" to="(90,90)"/>
+    <comp lib="0" loc="(70,90)" name="Pin">
+      <a name="label" val="p"/>
     </comp>
-    <comp lib="0" loc="(140,90)" name="Pin">
+    <comp lib="0" loc="(140,120)" name="Pin">
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
       <a name="label" val="y"/>
     </comp>
-    <comp lib="0" loc="(60,120)" name="Pin">
-      <a name="label" val="p"/>
+    <comp lib="0" loc="(110,120)" name="Pull Resistor">
+      <a name="facing" val="north"/>
     </comp>
-    <comp lib="0" loc="(110,90)" name="Pull Resistor">
-      <a name="pull" val="1"/>
+    <comp lib="0" loc="(110,70)" name="Power"/>
+    <comp lib="6" loc="(109,43)" name="Text">
+      <a name="text" val="Buffer: NMOS + pull-down"/>
     </comp>
-    <comp lib="0" loc="(110,160)" name="Ground"/>
-    <comp lib="6" loc="(97,41)" name="Text">
-      <a name="text" val="Buffer: PMOS + pull-up"/>
+    <comp lib="0" loc="(110,110)" name="Transistor">
+      <a name="type" val="n"/>
+      <a name="facing" val="south"/>
     </comp>
   </circuit>
 </project>

@@ -32,8 +32,8 @@
   */
 int main(void)
 {
-	puts("Hello, gcc on Win10!");
-	return 0;
+  puts("Hello, gcc on Win10!");
+  return 0;
 }
 
 /* Function definitions ------------------------------------------------------*/
