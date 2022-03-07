@@ -19,7 +19,6 @@
 #define F '0' /**< False symbol (F / L / 0) */
 
 /* Typedef -------------------------------------------------------------------*/
-typedef _Bool (*logic_operator)(_Bool,_Bool); /**< Binary boolean operator */
 
 /* Global variables ----------------------------------------------------------*/
 
@@ -33,7 +32,8 @@ typedef _Bool (*logic_operator)(_Bool,_Bool); /**< Binary boolean operator */
  * @param[in] op_sign Binary boolean operator symbol or designation
  * @return None
  */
-void print_truth_table(logic_operator op, const char* op_sign)
+//void print_truth_table(logic_operator op, const char* op_sign)
+void print_truth_table(_Bool op(_Bool,_Bool), const char* op_sign)
 {
   printf("\n| p | q | p%sq |\n-----------------\n", op_sign);
   unsigned char i;
@@ -49,15 +49,15 @@ void print_truth_table(logic_operator op, const char* op_sign)
 }
 
 /**
- * @brief Binary operator <<TODO>>
+ * @brief Binary operator Material nonimplication
  * @param[in] p First boolean input argument
  * @param[in] q Second boolean input argument
- * @return <<TODO>>
+ * @return p -/-> q
  */
-_Bool my_op(_Bool p, _Bool q) // <<TODO>> CHANGE NAME FUNCTION!
+_Bool my_material_nonimplication(_Bool p, _Bool q)
 {
   // USER CODE BEGIN
-  return 0;
+  return p && !q;
   // USER CODE END
 }
 
@@ -70,7 +70,7 @@ _Bool my_op(_Bool p, _Bool q) // <<TODO>> CHANGE NAME FUNCTION!
 int main(void)
 {
   // call example
-  print_truth_table(my_op, " ? "); // <<TODO>> CHANGE OPERATOR SYMBOL!
+  print_truth_table(my_material_nonimplication, "-/->"); 
   
   return 0;
 }

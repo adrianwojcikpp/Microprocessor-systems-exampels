@@ -70,11 +70,11 @@
     </comp>
     <comp lib="0" loc="(70,140)" name="Pin">
       <a name="appearance" val="classic"/>
-      <a name="label" val="q"/>
+      <a name="label" val="p"/>
     </comp>
     <comp lib="0" loc="(70,200)" name="Pin">
       <a name="appearance" val="classic"/>
-      <a name="label" val="p"/>
+      <a name="label" val="q"/>
     </comp>
     <comp lib="6" loc="(212,77)" name="Text">
       <a name="font" val="SansSerif bold 20"/>
