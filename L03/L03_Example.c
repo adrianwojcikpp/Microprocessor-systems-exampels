@@ -1,10 +1,10 @@
 /**
   ******************************************************************************
-  * @file    L02_example.c
+  * @file    L03_example.c
   * @author  AW           Adrian.Wojcik@put.poznan.pl
   * @version 2.0
-  * @date    08-Mar-2022
-  * @brief   Intruction #02 tasks solution template
+  * @date    14-Mar-2022
+  * @brief   Instruction #03 tasks solution template
   *
   ******************************************************************************
   */
@@ -35,41 +35,6 @@
 /* Function definitions ------------------------------------------------------*/
 
 /**
- * @brief Logic function truth table printing procedure
- * @param[in] fcn  : Logic function 
- * @param[in] bits : Input size (number of bits)
- * @param[in] n    : Number of integer inputs 
- * @return None
- */ 
-void print_truth_table(_Bool fcn(unsigned int), unsigned int bits, unsigned int n)
-{
-  // print table header
-  for(int s = 1; s < n; s++)
-    printf("   ");
-  printf("     |");
-  for(int j = 0; j < bits; j++)
-    printf(" %c |", (char)j + 'a');
-  printf(" %s |\n", "fcn");
-    
-  unsigned int bits_per_number = bits / n;
-  unsigned int upper_limit = pow(2, bits_per_number);
-  
-  // print table body
-  for(unsigned int i = 0; i < (1 << bits); i++)
-  {
-    printf("[");
-    // print row number(s)
-    for(int k = n-1; k > 0; k--)
-      printf("%2d,", (i >> k*bits_per_number) % upper_limit);
-    printf("%2d] |", i % upper_limit);
-    // print logic function values
-    for(int j = bits-1; j >= 0; j--)
-      printf(" %c |", (i & (1 << j)) ? T : F);
-    printf("  %c  |\n", fcn(i) ? T : F);
-  }
-}
-
-/**
  * @brief Saves C-string to text file.
  * @param[in] filename : File name 
  * @param[in] buffer   : Input C-string to be saved in text file
@@ -86,6 +51,36 @@ void save_buffer_to_file(char* filename, char* buffer)
   }
   fprintf(hFile,"%s", buffer);
   fclose(hFile);
+}
+
+/**
+ * @brief Logic function truth table printing procedure
+ * @param[in] fcn      : Logic function 
+ * @param[in] bits     : Input size (number of bits)
+ * @param[in] filename : Result file name
+ * @return None
+ */ 
+void print_truth_table(_Bool fcn(unsigned int), unsigned int bits, char* filename)
+{
+  char buffer[4096];
+  int len = 0;
+  
+  // print table header
+  for(int j = 0; j < bits; j++)
+    len += sprintf(buffer+len," %c ", (char)j + 'a');
+  len += sprintf(buffer+len,"| %s \n", "x");
+
+  // print table body
+  for(unsigned int i = 0; i < (1 << bits); i++)
+  {
+    // print logic function values
+    for(int j = bits-1; j >= 0; j--)
+      len += sprintf(buffer+len," %c ", (i & (1 << j)) ? T : F);
+    len += sprintf(buffer+len,"| %c \n", fcn(i) ? T : F);
+  }
+  
+  printf("%s", buffer);
+  save_buffer_to_file(filename, buffer);
 }
 
 /**
@@ -224,7 +219,7 @@ int main(void)
   
   puts("\n\nTASK #1 -------------------------------------------------------------------------- ");
   puts("Truth table: ");
-  print_truth_table(fcn, number_of_bits, 1); 
+  print_truth_table(fcn, number_of_bits, "tt_task_1.txt"); 
   puts("\nSum of product:");
   print_and_save_sop(fcn, number_of_bits, "sop_task_1.txt");
   puts("\nProduct of sum:");
@@ -235,7 +230,7 @@ int main(void)
   
   puts("\n\nTASK #2 -------------------------------------------------------------------------- ");
   puts("Truth table: ");
-  print_truth_table(fcn, number_of_bits, 1); 
+  print_truth_table(fcn, number_of_bits, "tt_task_2.txt"); 
   puts("\nSum of product:");
   print_and_save_sop(fcn, number_of_bits, "sop_task_2.txt");
   puts("\nProduct of sum:");
@@ -246,7 +241,7 @@ int main(void)
   
   puts("\n\nTASK #3 -------------------------------------------------------------------------- ");
   puts("Truth table: ");
-  print_truth_table(fcn, number_of_bits, 2); 
+  print_truth_table(fcn, number_of_bits, "tt_task_3.txt"); 
   puts("\nSum of product:");
   print_and_save_sop(fcn, number_of_bits, "sop_task_3.txt");
   puts("\nProduct of sum:");
