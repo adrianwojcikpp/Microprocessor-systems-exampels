@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * @file    L04_example_01.c
+  * @file    L04_example_02.cpp
   * @author  AW           Adrian.Wojcik@put.poznan.pl
   * @version 2.0
   * @date    14-Mar-2022
@@ -10,8 +10,9 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include <stdio.h>
-#include <stdint.h>
+#include <iostream>
+#include <cstdint>
+#include <bitset>
 
 /* Define --------------------------------------------------------------------*/
 
@@ -19,7 +20,7 @@
 
 /* Typedef -------------------------------------------------------------------*/
 typedef void (*reg_output_func)(uint32_t*, uint32_t);
-typedef _Bool (*reg_input_func)(uint32_t*, uint32_t);
+typedef bool (*reg_input_func)(uint32_t*, uint32_t);
 
 /* Global variables ----------------------------------------------------------*/
 
@@ -41,7 +42,9 @@ int unit_test_read_bit(reg_input_func read_bit);
 void reg_set_bit(uint32_t* reg, uint32_t bit)
 {
 /* USER CODE BEGIN: reg_set_bit */
-
+std::bitset<32> bits(*reg);
+bits.set(bit, true);
+*reg = static_cast<uint32_t>(bits.to_ulong());
 /* USER CODE END: reg_set_bit */
 }
 
@@ -53,7 +56,9 @@ void reg_set_bit(uint32_t* reg, uint32_t bit)
 void reg_reset_bit(uint32_t* reg, uint32_t bit)
 {
 /* USER CODE BEGIN: reg_reset_bit */
-
+std::bitset<32> bits(*reg);
+bits.set(bit, false);
+*reg = static_cast<uint32_t>(bits.to_ulong());
 /* USER CODE END: reg_reset_bit */
 }
 
@@ -65,7 +70,9 @@ void reg_reset_bit(uint32_t* reg, uint32_t bit)
 void reg_toggle_bit(uint32_t* reg, uint32_t bit)
 {
 /* USER CODE BEGIN: reg_toggle_bit */
-
+std::bitset<32> bits(*reg);
+bits.flip(bit);
+*reg = static_cast<uint32_t>(bits.to_ulong());
 /* USER CODE END: reg_toggle_bit */
 }
 
@@ -75,11 +82,12 @@ void reg_toggle_bit(uint32_t* reg, uint32_t bit)
  * @param[in] bit Bit number to read [0-31]
  * @return Selected bit value [0/1]
  */
-_Bool reg_read_bit(uint32_t* reg, uint32_t bit)
+bool reg_read_bit(uint32_t* reg, uint32_t bit)
 {
-_Bool retval;
+bool retval;
 /* USER CODE BEGIN: reg_read_bit */
-
+std::bitset<32> bits(*reg);
+retval = bits[bit];
 /* USER CODE END: reg_read_bit */
 return retval;
 }
@@ -93,30 +101,30 @@ return retval;
 int main()
 {
     /* Execute unit test #1: reg_set_bit function */ 
-    printf("Unit test #1: reg_set_bit ");
+    std::cout << "Unit test #1: reg_set_bit ";
     if(unit_test_set_bit(reg_set_bit) == 0)
-      printf("succeeded.\n");
+      std::cout <<  "succeeded." << std::endl;
     else
       printf("failed.\n");
     
     /* Execute unit test #2: reg_reset_bit function */ 
-    printf("Unit test #2: reg_reset_bit ");
+    std::cout << "Unit test #2: reg_reset_bit ";
     if(unit_test_reset_bit(reg_reset_bit) == 0)
-      printf("succeeded.\n");
+      std::cout <<  "succeeded." << std::endl;
     else
       printf("failed.\n");
     
     /* Execute unit test #3: reg_toggle_bit function */ 
-    printf("Unit test #3: reg_toggle_bit ");
+    std::cout << "Unit test #3: reg_toggle_bit ";
     if(unit_test_toggle_bit(reg_toggle_bit) == 0)
-      printf("succeeded.\n");
+      std::cout <<  "succeeded." << std::endl;
     else
       printf("failed.\n");
     
     /* Execute unit test #4 reg_red_bit function */ 
-    printf("Unit test #4: reg_red_bit ");
+    std::cout << "Unit test #4: reg_red_bit ";
     if(unit_test_read_bit(reg_read_bit) == 0)
-      printf("succeeded.\n");
+      std::cout <<  "succeeded." << std::endl;
     else
       printf("failed.\n");
     
@@ -152,9 +160,9 @@ int unit_test_reset_bit(reg_output_func reset_bit)
 
 int unit_test_toggle_bit(reg_output_func toggle_bit)
 {
-  uint32_t input = 0x55555555;
-  uint32_t output = 0x2AAAAAAA;
-  for(uint8_t i = 0; i < 31; i++)
+  uint32_t input = 0x0000AAAA;
+  uint32_t output = 0x00005555;
+  for(uint8_t i = 0; i < 16; i++)
     toggle_bit(&input, i);
   if(input == output)
     return 0;  // Success
