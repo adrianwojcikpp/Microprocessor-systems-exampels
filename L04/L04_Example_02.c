@@ -141,8 +141,8 @@ int unit_test_set_bit(reg_output_func set_bit)
 int unit_test_reset_bit(reg_output_func reset_bit)
 {
   uint32_t input = 0xFFFFFFFF;
-  uint32_t output = 0x00000000;
-  for(uint8_t i = 0; i < 32; i++)
+  uint32_t output = 0xFFFF0000;
+  for(uint8_t i = 0; i < 16; i++)
     reset_bit(&input, i);
   if(input == output)
     return 0;  // Success
