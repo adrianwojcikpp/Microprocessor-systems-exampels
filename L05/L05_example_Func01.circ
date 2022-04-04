@@ -100,7 +100,7 @@
       <a name="label" val="x_rom"/>
       <a name="output" val="true"/>
     </comp>
-    <comp lib="8" loc="(366,92)" name="Text">
+    <comp lib="8" loc="(381,98)" name="Text">
       <a name="text" val="Boolean function #01: divisibility by N"/>
     </comp>
     <comp loc="(480,130)" name="FUNC01_Gates"/>
@@ -151,6 +151,40 @@
     <wire from="(480,260)" to="(500,260)"/>
     <wire from="(480,390)" to="(500,390)"/>
     <wire from="(480,520)" to="(500,520)"/>
+  </circuit>
+  <circuit name="FUNC01_Mux">
+    <a name="appearance" val="logisim_evolution"/>
+    <a name="circuit" val="FUNC01_Mux"/>
+    <a name="circuitnamedboxfixedsize" val="true"/>
+    <a name="simulationFrequency" val="1.0"/>
+    <comp lib="0" loc="(270,370)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="a"/>
+    </comp>
+    <comp lib="0" loc="(270,400)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="b"/>
+    </comp>
+    <comp lib="0" loc="(270,430)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="c"/>
+    </comp>
+    <comp lib="0" loc="(270,460)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="d"/>
+    </comp>
+    <comp lib="0" loc="(270,490)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="e"/>
+    </comp>
+    <comp lib="0" loc="(360,170)" name="Pull Resistor"/>
+    <comp lib="0" loc="(370,170)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="x"/>
+      <a name="output" val="true"/>
+    </comp>
+    <wire from="(360,170)" to="(370,170)"/>
   </circuit>
   <circuit name="FUNC01_Gates">
     <a name="appearance" val="logisim_evolution"/>
@@ -400,106 +434,70 @@
     <wire from="(490,60)" to="(490,620)"/>
     <wire from="(490,60)" to="(510,60)"/>
   </circuit>
-  <circuit name="FUNC01_Mux">
-    <a name="appearance" val="logisim_evolution"/>
-    <a name="circuit" val="FUNC01_Mux"/>
-    <a name="circuitnamedboxfixedsize" val="true"/>
-    <a name="simulationFrequency" val="1.0"/>
-    <comp lib="0" loc="(100,120)" name="Pin">
-      <a name="appearance" val="NewPins"/>
-      <a name="label" val="c"/>
-    </comp>
-    <comp lib="0" loc="(100,150)" name="Pin">
-      <a name="appearance" val="NewPins"/>
-      <a name="label" val="d"/>
-    </comp>
-    <comp lib="0" loc="(100,180)" name="Pin">
-      <a name="appearance" val="NewPins"/>
-      <a name="label" val="e"/>
-    </comp>
-    <comp lib="0" loc="(100,60)" name="Pin">
-      <a name="appearance" val="NewPins"/>
-      <a name="label" val="a"/>
-    </comp>
-    <comp lib="0" loc="(100,90)" name="Pin">
-      <a name="appearance" val="NewPins"/>
-      <a name="label" val="b"/>
-    </comp>
-    <comp lib="0" loc="(500,60)" name="Pull Resistor"/>
-    <comp lib="0" loc="(510,60)" name="Pin">
-      <a name="appearance" val="NewPins"/>
-      <a name="facing" val="west"/>
-      <a name="label" val="x"/>
-      <a name="output" val="true"/>
-    </comp>
-    <wire from="(500,60)" to="(510,60)"/>
-  </circuit>
   <circuit name="FUNC01_Demux">
     <a name="appearance" val="logisim_evolution"/>
     <a name="circuit" val="FUNC01_Demux"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
-    <comp lib="0" loc="(100,120)" name="Pin">
-      <a name="appearance" val="NewPins"/>
-      <a name="label" val="c"/>
-    </comp>
-    <comp lib="0" loc="(100,150)" name="Pin">
-      <a name="appearance" val="NewPins"/>
-      <a name="label" val="d"/>
-    </comp>
-    <comp lib="0" loc="(100,180)" name="Pin">
-      <a name="appearance" val="NewPins"/>
-      <a name="label" val="e"/>
-    </comp>
-    <comp lib="0" loc="(100,60)" name="Pin">
+    <comp lib="0" loc="(180,400)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="label" val="a"/>
     </comp>
-    <comp lib="0" loc="(100,90)" name="Pin">
+    <comp lib="0" loc="(180,430)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="label" val="b"/>
     </comp>
-    <comp lib="0" loc="(500,60)" name="Pull Resistor"/>
-    <comp lib="0" loc="(510,60)" name="Pin">
+    <comp lib="0" loc="(180,460)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="c"/>
+    </comp>
+    <comp lib="0" loc="(180,490)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="d"/>
+    </comp>
+    <comp lib="0" loc="(180,520)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="e"/>
+    </comp>
+    <comp lib="0" loc="(430,240)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="facing" val="west"/>
       <a name="label" val="x"/>
       <a name="output" val="true"/>
     </comp>
-    <wire from="(500,60)" to="(510,60)"/>
+    <comp lib="0" loc="(430,240)" name="Pull Resistor"/>
   </circuit>
   <circuit name="FUNC01_Rom">
     <a name="appearance" val="logisim_evolution"/>
     <a name="circuit" val="FUNC01_Rom"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="simulationFrequency" val="1.0"/>
-    <comp lib="0" loc="(100,120)" name="Pin">
-      <a name="appearance" val="NewPins"/>
-      <a name="label" val="c"/>
-    </comp>
-    <comp lib="0" loc="(100,150)" name="Pin">
-      <a name="appearance" val="NewPins"/>
-      <a name="label" val="d"/>
-    </comp>
-    <comp lib="0" loc="(100,180)" name="Pin">
-      <a name="appearance" val="NewPins"/>
-      <a name="label" val="e"/>
-    </comp>
-    <comp lib="0" loc="(100,60)" name="Pin">
+    <comp lib="0" loc="(110,450)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="label" val="a"/>
     </comp>
-    <comp lib="0" loc="(100,90)" name="Pin">
+    <comp lib="0" loc="(110,480)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="label" val="b"/>
     </comp>
-    <comp lib="0" loc="(500,60)" name="Pull Resistor"/>
-    <comp lib="0" loc="(510,60)" name="Pin">
+    <comp lib="0" loc="(110,510)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="c"/>
+    </comp>
+    <comp lib="0" loc="(110,540)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="d"/>
+    </comp>
+    <comp lib="0" loc="(110,570)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="e"/>
+    </comp>
+    <comp lib="0" loc="(430,500)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="facing" val="west"/>
       <a name="label" val="x"/>
       <a name="output" val="true"/>
     </comp>
-    <wire from="(500,60)" to="(510,60)"/>
+    <comp lib="0" loc="(430,500)" name="Pull Resistor"/>
   </circuit>
 </project>
