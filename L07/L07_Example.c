@@ -13,10 +13,9 @@
 #include <stdio.h>
 
 /* Typedef -------------------------------------------------------------------*/
-typedef enum { a, b, c, d} INPUT;                       //! Input symbols 
-typedef enum { alpha = 1, beta = 2, gamma = 4 } OUTPUT; //! Output symbols 
-typedef enum { A, B, C } STATE;                         //! State symbols 
-
+typedef _Bool INPUT;   //! Input symbols 
+typedef _Bool OUTPUT;  //! Output symbols 
+typedef enum { NONE = -1, START = 0, FIRST = 1, SUCCESS = 2, SECOND = 3, SUCCESSD = 6, DELAY = 7 } STATE; //! STATE symbols 
 
 /* Function prototypes ------------------------------------------------------*/
 
@@ -41,7 +40,7 @@ OUTPUT STATE_MACHINE_GetOutput(STATE s);
  * @param[in] s - a current state symbol
  * @return Current output symbol
  */
-// OUTPUT STATE_MACHINE_GetOutput(INPUT i, STATE s);
+OUTPUT STATE_MACHINE_GetOutput2(INPUT i, STATE s);
 
 /**
  * @brief Prints table row with names of input, output and state
@@ -54,20 +53,35 @@ void print_state_machine(INPUT i, OUTPUT o, STATE s);
 /* Entry point: main function -----------------------------------------------*/
 int main(void)
 {
-  INPUT input[] = {a, b, a, c, b, b, b, d, d, c, c, c, a, d};
-  STATE state = A; // Initial state
+  INPUT input[] = {0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0};
+  STATE state_moore = START; // Initial state
   
   // Logging table header
-  printf(" # | I |   O   | S | \n");
-  printf("-------------------- \n");
+  printf(" Input size: %llu \n\n", sizeof(input) / sizeof(input[0]));
+  printf("Moore machine\n");
+  printf(" # | I | O |     S    | \n");
+  printf("----------------------- \n");
   
   // Logging table data
-  for(int i = 0; i < 14; i++)
+  for(int i = 0; i < (sizeof(input) / sizeof(input[0])); i++)
   {
-    print_state_machine(input[i], STATE_MACHINE_GetOutput(state), state);
-    state = STATE_MACHINE_StateTransition(input[i], state);
+    print_state_machine(input[i], STATE_MACHINE_GetOutput(state_moore), state_moore);
+    state_moore = STATE_MACHINE_StateTransition(input[i], state_moore);
   }
     
+  STATE state_mealy = START; // Initial state
+	
+  printf("\nMealy machine\n");
+  printf(" # | I | O |     S    | \n");
+  printf("----------------------- \n");
+  
+  // Logging table data
+  for(int i = 0; i < (sizeof(input) / sizeof(input[0])); i++)
+  {
+    print_state_machine(input[i], STATE_MACHINE_GetOutput2(input[i], state_mealy), state_mealy);
+    state_mealy = STATE_MACHINE_StateTransition(input[i], state_mealy);
+  }	
+	
   return 0;
 }
 
@@ -75,32 +89,129 @@ int main(void)
 
 STATE STATE_MACHINE_StateTransition(INPUT i, STATE s)
 {
-// TODO: implement Next State Truth Table
-return A;
+	switch(s)
+	{
+		case START:
+		{
+			if(i == 1)
+				return START;
+			else
+				return FIRST;
+		}
+		case FIRST:
+		{
+			if(i == 1)
+				return SECOND;
+			else
+				return FIRST;
+		}
+		case SECOND:
+		{
+			if(i == 1)
+				return SUCCESS;
+			else
+				return DELAY;
+		}
+		case DELAY:
+		{
+			if(i == 1)
+				return SUCCESSD;
+			else
+				return DELAY;
+		}
+		case SUCCESSD:
+		{
+			if(i == 1)
+				return SUCCESS;
+			else
+				return DELAY;
+		}
+		case SUCCESS:
+		{
+			if(i == 1)
+				return START;
+			else
+				return FIRST;
+		}
+		default:
+			return NONE;
+	}
+}
+
+OUTPUT STATE_MACHINE_GetOutput2(INPUT i, STATE s)
+{
+	switch(s)
+	{
+		case START:
+		{
+			if(i == 1)
+				return 0;
+			else
+				return 0;
+		}
+		case FIRST:
+		{
+			if(i == 1)
+				return 0;
+			else
+				return 0;
+		}
+		case SECOND:
+		{
+			if(i == 1)
+				return 1;
+			else
+				return 0;
+		}
+		case DELAY:
+		{
+			if(i == 1)
+				return 1;
+			else
+				return 0;
+		}
+		case SUCCESSD:
+		{
+			if(i == 1)
+				return 1;
+			else
+				return 0;
+		}
+		case SUCCESS:
+		{
+			if(i == 1)
+				return 0;
+			else
+				return 0;
+		}
+		default:
+			return 0;
+	}
 }
 
 OUTPUT STATE_MACHINE_GetOutput(STATE s)
 {
-// TODO: implement Next State Truth Table
-return alpha;
+
+if(s == SUCCESSD || s == SUCCESS)
+	return 1;
+else
+	return 0;
 }
 
 void print_state_machine(INPUT i, OUTPUT o, STATE s)
 {
                                       
   static const char* _input_names[] = {
-  /* 00   01   10   11 */
-    "a", "b", "c", "d"
+    "0", "1"
   };
   
   static const char* _output_names[] = {
-  /*  000      001      010      011      100   */
-    "     ", "alpha", "beta ", "     ", "gamma"
+    "0", "1"
   };
   
   static const char* _state_names[] = {
-  /* 00   01   10 */ 
-    "A", "B", "C"
+  /*  000          001          010         011         100         101         110         111    */
+    "START   ",  "FIRST   ",  "SUCCESS ", "SECOND  ", "        ", "        ", "SUCCESSD", "DELAY   "
   };
   
   static int cnt = 0;
