@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * @file    struct_example.c
+  * @file    union_example.c
   * @author  AW		adrian.wojcik@put.poznan.pl
   * @version 3.0
   * @date    09-May-2022
