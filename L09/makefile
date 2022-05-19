@@ -1,5 +1,10 @@
 default: all
 
+all: array\
+	union\
+	struct\
+	mealy
+
 array: array_example.c
 	gcc array_example.c -o array_example.exe -std=c18 -Wall -pedantic	
 	
