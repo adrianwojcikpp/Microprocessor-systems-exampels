@@ -1,8 +1,26 @@
+/**
+  ******************************************************************************
+  * @file    serial_port_demo.c.c
+  * @author  AW		adrian.wojcik@put.poznan.pl
+  * @version 3.0
+  * @date    22-May-2022
+  * @brief   Serial port demo app in C
+  *
+  ******************************************************************************
+  */
+
+/* Includes ------------------------------------------------------------------*/
 #include <stdio.h>
 #include <string.h>
 
 #include "serial_port_lib.h"
 
+/* Main function -------------------------------------------------------------*/
+
+/**
+  * @brief  The application entry point.
+  * @retval 0 
+  */
 int main(void)
 {
   SERIAL_PORT_Handle handle;

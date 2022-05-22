@@ -17,7 +17,7 @@
 #define array_size(x) sizeof( x ) / sizeof( x[0] )
 
 /* Global variables ----------------------------------------------------------*/
-uint8_t x[10];
+uint16_t x[10];
 
 /* Main function -------------------------------------------------------------*/
 
@@ -27,7 +27,7 @@ uint8_t x[10];
   */
 int main(void)
 {
-  uint8_t y[10];// = { 0 };
+  uint16_t y[10] = { 0, };
   
   printf("First element of array 'x' sizeof(): %llu\n", sizeof(x[0])); // %I64u instead of %llu for Microsoft Visual Studio
   printf("Array 'x' sizeof(): %llu\n", sizeof(x));
