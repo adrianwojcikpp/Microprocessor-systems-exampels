@@ -1,0 +1,4 @@
+serial_port_lib_stm32.c:39:5:SERIAL_PORT_Init	16	static
+serial_port_lib_stm32.c:47:5:SERIAL_PORT_DeInit	16	static
+serial_port_lib_stm32.c:52:5:SERIAL_PORT_WriteString	24	static
+serial_port_lib_stm32.c:67:5:SERIAL_PORT_ReadLine	24	static
