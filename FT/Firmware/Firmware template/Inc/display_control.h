@@ -43,22 +43,29 @@ typedef struct {
 /* Public function prototypes ------------------------------------------------*/
 
 /**
- *
+ * @brief Seven-segment display decimal unsigned integer printing.
+ * @param[in/out] hdisp : Display handle
+ * @param[in]     dec   : Decimal number in range <0, 9999>
+ * @retval None
  */
-void display_decimal(DISP_HandleTypeDef* hdisp, unsigned int number);
+void DISP_printDecUInt(DISP_HandleTypeDef* hdisp, unsigned int dec);
 
 /**
- *
+ * @brief Initialization of time measurement. 
+ * @retval None
  */
 void timestamp_init(void);  
 
 /**
- *
+ * @brief Opening log file for writing.
+ * @param[in] filename : Name of log file 
+ * @retval None
  */
 void logfile_init(char* filename);  
 
 /**
- *
+ * @brief Closing of log file.
+ * @retval None
  */
 void logfile_deinit();  
 

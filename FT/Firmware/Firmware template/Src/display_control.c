@@ -27,23 +27,19 @@ struct timeb timestamp_start;
 FILE* logfile;
 
 /* Private function prototypes -----------------------------------------------*/
-/**
- *
- */
-void display_debug_print(DISP_HandleTypeDef* hdisp); 
-
-/**
- *
- */
-void display_debug_log(DISP_HandleTypeDef* hdisp); 
+void disp_debug_print(DISP_HandleTypeDef* hdisp); 
+void disp_debug_log(DISP_HandleTypeDef* hdisp); 
 
 /* Public function -----------------------------------------------------------*/
 /**
- *
+ * @brief Seven-segment display decimal unsigned integer printing.
+ * @param[in/out] hdisp : Display handle
+ * @param[in]     dec   : Decimal number in range <0, 9999>
+ * @retval None
  */
-void display_decimal(DISP_HandleTypeDef* hdisp, unsigned int number)
+void DISP_printDecUInt(DISP_HandleTypeDef* hdisp, unsigned int dec)
 {
-	display_debug_print(hdisp);
+	disp_debug_print(hdisp);
 	for(int i = 0; i < 8; i++)
 	{
 		/* USER CODE Begin */
@@ -58,23 +54,25 @@ void display_decimal(DISP_HandleTypeDef* hdisp, unsigned int number)
 		
 		HAL_GPIO_WritePin(hdisp->Port, hdisp->CLOCK_Pin, GPIO_PIN_RESET);
 		HAL_Delay(hdisp->ClockPeriod/2);
-		display_debug_print(hdisp);
-		display_debug_log(hdisp);
+		disp_debug_print(hdisp);
+		disp_debug_log(hdisp);
 		
 		HAL_GPIO_WritePin(hdisp->Port, hdisp->CLOCK_Pin, GPIO_PIN_SET);
 		HAL_Delay(hdisp->ClockPeriod/2);
-		display_debug_print(hdisp);
-		display_debug_log(hdisp);
+		disp_debug_print(hdisp);
+		disp_debug_log(hdisp);
 	}
 	
 	HAL_GPIO_WritePin(hdisp->Port, hdisp->CLOCK_Pin, GPIO_PIN_RESET);
 	HAL_Delay(hdisp->ClockPeriod/2);
-	display_debug_print(hdisp);
-	display_debug_log(hdisp);
+	disp_debug_print(hdisp);
+	disp_debug_log(hdisp);
 }
 
 /**
- *
+ * @brief Opening log file for writing.
+ * @param[in] filename : Name of log file 
+ * @retval None
  */
 void logfile_init(char* filename)
 {
@@ -84,7 +82,8 @@ void logfile_init(char* filename)
 }
 
 /**
- *
+ * @brief Closing of log file.
+ * @retval None
  */
 void logfile_deinit()
 {
@@ -92,7 +91,8 @@ void logfile_deinit()
 }	
 
 /**
- *
+ * @brief Initialization of time measurement. 
+ * @retval None
  */
 void timestamp_init(void)
 {
@@ -100,9 +100,7 @@ void timestamp_init(void)
 }
 
 /* Private function ----------------------------------------------------------*/
-/**
- *
- */
+
 float timestamp_get_seconds(void)
 {
 	struct timeb timestamp_now;
@@ -110,10 +108,7 @@ float timestamp_get_seconds(void)
 	return (1.0f * (timestamp_now.time - timestamp_start.time) + 0.001f*(timestamp_now.millitm - timestamp_start.millitm));
 }
 
-/**
- *
- */
-void display_debug_print(DISP_HandleTypeDef* hdisp)
+void disp_debug_print(DISP_HandleTypeDef* hdisp)
 {	
 	static _Bool isfirst = 1;
 	if(isfirst)
@@ -128,16 +123,13 @@ void display_debug_print(DISP_HandleTypeDef* hdisp)
 		HAL_GPIO_ReadPin(hdisp->Port, hdisp->DATA4_Pin));
 }
 
-/**
- *
- */
-void display_debug_log(DISP_HandleTypeDef* hdisp)
+void disp_debug_log(DISP_HandleTypeDef* hdisp)
 {
 	static _Bool isfirst = 1;
 	if(isfirst)
-		fprintf(logfile, "TIME,CLOCK,DATA1,DATA2,DATA3,DATA4\n");
+		fprintf(logfile, "TIME,CLOCK,DATA1,DATA2,DATA3,DATA4");
 	isfirst = 0;
-	fprintf(logfile, "%06.03f,%u,%u,%u,%u,%u\n", 
+	fprintf(logfile, "\n%06.03f,%u,%u,%u,%u,%u", 
 		timestamp_get_seconds(),
 		HAL_GPIO_ReadPin(hdisp->Port, hdisp->CLOCK_Pin),
 		HAL_GPIO_ReadPin(hdisp->Port, hdisp->DATA1_Pin),
