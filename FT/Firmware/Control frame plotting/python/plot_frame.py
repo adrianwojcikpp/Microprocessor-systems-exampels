@@ -72,4 +72,4 @@ def plot_frame(number, clock_period):
                'CONTROL FRAME FOR NUMBER: '+DEC_DIGITS_CHAR);
 
 if __name__ == '__main__':
-    plot_frame(1, 0.001)
+    plot_frame(1, 0.5)
