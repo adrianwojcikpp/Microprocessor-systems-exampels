@@ -7,7 +7,7 @@
 %  @version 2.0
 %  @date    01-Jun-2022
 %  @brief   Function for plotting display control frame (see: Final task)
-%  @remark  Testes for MATLAB R2021b
+%  @remark  Testes for Octave 7.1.0
 %
 % *************************************************************************
 function hFig = plot_frame(number, clock_period)

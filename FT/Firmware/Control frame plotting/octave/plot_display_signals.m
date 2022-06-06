@@ -7,7 +7,7 @@
 %  @version 2.0
 %  @date    01-Jun-2022
 %  @brief   Common sinal plotting function (see: Final task)
-%  @remark  Testes for MATLAB R2021b
+%  @remark  Testes for Octave 7.1.0
 %
 % *************************************************************************
 function hFig = plot_display_signals(TIME, CLOCK, DATA1, DATA2, DATA3, DATA4, TS, TITLE)
