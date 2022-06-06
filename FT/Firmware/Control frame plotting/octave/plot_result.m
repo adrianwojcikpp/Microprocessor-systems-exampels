@@ -14,7 +14,7 @@ function hFig = plot_result(filename)
 
 data = dlmread(filename);
 
-TIME  = [0, data(1:end-1,1)'];
+TIME  = data(1:end-1,1)';
 CLOCK = data(:,2)';
 DATA1 = data(:,3)';
 DATA2 = data(:,4)';
