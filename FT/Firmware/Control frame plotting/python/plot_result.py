@@ -55,4 +55,4 @@ def plot_result(filename):
                'FIRMWARE TEST RESULT');
             
 if __name__ == '__main__':
-    plot_result('../Firmware template/result.csv')
+    plot_result('../../Firmware template/result.csv')
