@@ -33,16 +33,15 @@ def plot_frame(number, clock_period):
     clock_period = clock_period * 1000 # [ms]
     TS = clock_period / 2
     TIME = np.r_[0, TS * np.arange(0,17)]
-    CLOCK = np.array([0,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1])
     CLOCK = np.r_[0, np.squeeze(np.tile([0,1], [1,math.floor(len(TIME)/2)-1]))]
 
-    DEC_DIGITS_CHAR = "%4u" % number 
+    DEC_DIGITS_CHAR = "%4u" % number
     DEC_DIGITS = np.zeros(4,dtype=int)
     for i in np.arange(0,4):
         if DEC_DIGITS_CHAR[i] >= '0' and DEC_DIGITS_CHAR[i] <= '9':
             DEC_DIGITS[i] = int(DEC_DIGITS_CHAR[i]) - int('0')
         else:
-            DEC_DIGITS[i] = 11
+            DEC_DIGITS[i] = 10
 
     DEC_DIGIT_2_SEG = [0xC0, 0xF9, 0xA4, 0xB0, 0x99, \
                        0x92, 0x82, 0xF8, 0x80, 0x90, 0xFF] # Common anode
@@ -73,4 +72,4 @@ def plot_frame(number, clock_period):
                'CONTROL FRAME FOR NUMBER: '+DEC_DIGITS_CHAR);
 
 if __name__ == '__main__':
-    plot_frame(9876, 0.001)
+    plot_frame(1, 0.001)

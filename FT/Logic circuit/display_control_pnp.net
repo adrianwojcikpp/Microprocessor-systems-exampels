@@ -1,0 +1,33 @@
+* C:\PP\Dydaktyka\MATERIALY\TC_MATERIALY\Microprocessor-systems-exampels\FT\Logic circuit\display_control_pnp.asc
+Q1 N001 N003 0 0 NPN
+R_A N005 0 {Rcom}
+R2 N002 N001 100
+R3 N003 GPIO 10k
+V1 GPIO 0 PULSE(0V 3.3V 0 0 0 0.5m 1m)
+V2 +5V 0 5V
+D_A1 N004 N005 LED
+Q2 N004 N002 +5V 0 PNP
+D_B1 N004 N006 LED
+D_C1 N004 N007 LED
+D3 N004 N008 LED
+D4 N004 N009 LED
+D5 N004 N010 LED
+D6 N004 N011 LED
+D7 N004 N012 LED
+R_B N006 0 {Rcom}
+R_C N007 0 {Rcom}
+R_D N008 0 {Rcom}
+R_E N009 0 {Rcom}
+R_F N010 0 {Rcom}
+R_G N011 0 {Rcom}
+R_H N012 0 {Rcom}
+.model D D
+.lib C:\Users\AW\Documents\LTspiceXVII\lib\cmp\standard.dio
+.model NPN NPN
+.model PNP PNP
+.lib C:\Users\AW\Documents\LTspiceXVII\lib\cmp\standard.bjt
+.tran 10m
+.model LED D(Vfwd = 2V)
+.param Rcom=500
+.backanno
+.end
