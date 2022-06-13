@@ -53,7 +53,7 @@ void print_state_machine(INPUT i, OUTPUT o, STATE s);
 /* Entry point: main function -----------------------------------------------*/
 int main(void)
 {
-  INPUT input[] = {0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0};
+  INPUT input[] = {1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1,0};
   STATE state_moore = START; // Initial state
   
   // Logging table header
